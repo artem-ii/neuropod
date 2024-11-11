@@ -3,71 +3,33 @@ extends layout
 
 block content
   
-  if user
-    div(label='Upper panel')
-      a(href='https://www.obrainlab.com')
-        img(src='http://localhost:3000/img/logo-default-full.png' width='150px')
-    p Hello #{user.firstName + ' ' + user.lastName}
-    // p #{JSON.stringify(user)} codes 
+
+  div(label='Upper panel')
+    a(href='https://www.obrainlab.com')
+      img(src='http://localhost:3000/img/logo-default-full.png' width='150px')
+  p Hello!
+  // p #{JSON.stringify(user)} codes 
+  div(label='title')
+    h1(align='center')= title
+  div(class= 'inner' align='center' label='Assessments')
+    h3 Try Assessments from neuroPOD Battery
+    br
+    a(class='button_shdw' href='http://localhost:9000/publix/PuBad9rUrOG') Backwards Digit Span
+    br
+    br
+    a(class='button_shdw' href='http://localhost:9000/publix/FElt04UtNll') Delay Discounting
+    - console.log('Home page rendered\n')
     br
     br
     br
     br
+    h3 Participate in neuroPOD Study
+    p If you would like to get notified
+    p when we start recruitment, click 
+    p the button below.
+    |
+    a(class='button_no_shdw' href='https://elomake.helsinki.fi/lomakkeet/132391/lomake.html') Participate
     br
     br
-    div(label='title')
-      h1(align='center')= title
-    br
-    br
-    // tag::logoutLink[]
-    // - console.log(user)
-    if (JSON.stringify(studyCode) !== '[]')
-      div(align='center' label='Consent')
-        a(class='button_shdw' href='http://localhost:9000/publix/'+studyCode[0]) Welcome and Consent
-      br
-      br
-      br
-      div(align='center' label='Assessments')
-        a(class='button_shdw' href='http://localhost:9000/publix/'+studyCode[1]) Start Assessment (Part 1)
-        br
-        br
-        a(class='button_shdw' href='http://localhost:9000/publix/'+studyCode[2]) Start Assessment (Part 2)
-        br
-        br
-        a(class='button_shdw' href='http://localhost:9000/publix/'+studyCode[3]) Start Assessment (Part 3)
-      br
-      br
-      br
-      div(align='center' label='Footer')
-        a(class='button_shdw' href=fusionAuthURL+'/oauth2/logout/?client_id='+clientId) Logout
-      - console.log('Home page rendered\n')
-      // end::logoutLink[]
-  else
-    div(class='outer')
-      a(href='https://www.obrainlab.com')
-        img(src='http://localhost:3000/img/logo-default-full.png' width='150px')
-      div(class='middle')
-        div(class='inner' align='center')
-          h1(align='center')= title
-          br
-          br
-          p Hi, you have reached the neuroPOD study login page. Please click Login button below to start
-          br
-          |
-          a(class='button_no_shdw' href=fusionAuthURL+'/oauth2/authorize?client_id='+clientId+'&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth-redirect&scope=offline_access&state='+stateValue+'&code_challenge='+challenge+'&code_challenge_method=S256') Login
-          |
-          br
-          br
-          br
-          br
-          br
-          p If you haven't yet got your user credentials, but you would like to participate in the study, please complete a participation request by clicking the button below.
-          br
-          |
-          a(class='button_no_shdw' href='https://elomake.helsinki.fi/lomakkeet/132391/lomake.html') Participate
-          br
-          br
-          |
-          p Thank you!
-  if (JSON.stringify(studyCode) === '[]')
-    p(style='color: red' align='center') Please Refresh page
+    |
+    p Thank you!
